@@ -2,7 +2,7 @@
 
 Aplikasi web untuk mendeteksi dan menghapus watermark, teks, logo, atau objek mengganggu pada gambar secara otomatis maupun manual. Berjalan **100% di sisi klien (Client-Side murni)** tanpa server backend, tanpa API Key pihak ketiga, dan tanpa kompresi yang merusak kualitas asli gambar (Mendukung Output Ultra-HD/PNG murni).
 
-> 🌐 **Live Demo:** [https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/](https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/)
+> 🌐 **Live Demo:** [https://123tool.github.io/watermark-remover/](https://123tool.github.io/watermark-remover/)
 
 ---
 
