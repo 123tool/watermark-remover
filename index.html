@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Remover</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk icon pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1><i class="fa-solid fa-wand-magic-sparkles"></i> Magic Eraser <span class="badge">PRO</span></h1>
+            <p>Hapus watermark otomatis & manual sensitivitas tinggi tanpa merusak kualitas.</p>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Upload Zone (Ditampilkan jika gambar belum ada) -->
+            <div class="upload-zone" id="uploadZone">
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                <h3>Tarik & Lepas Gambar di Sini</h3>
+                <p>atau klik untuk memilih file dari komputer</p>
+                <span class="note">Mendukung format PNG, JPG, JPEG (Kualitas Asli Terjaga)</span>
+            </div>
+
+            <!-- Editor Interface (Tersembunyi di awal) -->
+            <div class="editor-zone hidden" id="editorZone">
+                <div class="toolbar">
+                    <!-- Mode Selector -->
+                    <div class="tool-group">
+                        <button id="btnAutoMode" class="btn-tool active"><i class="fa-solid fa-robot"></i> Otomatis (AI)</button>
+                        <button id="btnManualMode" class="btn-tool"><i class="fa-solid fa-paint-brush"></i> Manual Brush</button>
+                    </div>
+
+                    <!-- Contextual Controls for Auto Mode -->
+                    <div id="autoControls" class="control-sub-group">
+                        <label for="sensitivityRange">Sensitivitas Deteksi:</label>
+                        <input type="range" id="sensitivityRange" min="1" max="100" value="75">
+                        <span id="sensitivityVal">75%</span>
+                        <button id="btnRunAuto" class="btn-action"><i class="fa-solid fa-play"></i> Proses Deteksi</button>
+                    </div>
+
+                    <!-- Contextual Controls for Manual Mode -->
+                    <div id="manualControls" class="control-sub-group hidden">
+                        <label for="brushSize">Ukuran Kuas:</label>
+                        <input type="range" id="brushSize" min="5" max="100" value="25">
+                        <span id="brushVal">25px</span>
+                        <button id="btnClearMask" class="btn-secondary"><i class="fa-solid fa-trash-can"></i> Reset Kuas</button>
+                    </div>
+
+                    <!-- Global Actions -->
+                    <div class="tool-group right">
+                        <button id="btnReset" class="btn-danger"><i class="fa-solid fa-rotate-left"></i> Ganti Gambar</button>
+                        <button id="btnDownload" class="btn-success"><i class="fa-solid fa-download"></i> Unduh HD</button>
+                    </div>
+                </div>
+
+                <!-- Canvas Workspace Container -->
+                <div class="canvas-container">
+                    <div class="canvas-wrapper">
+                        <!-- Canvas Utama untuk menampilkan gambar asli -->
+                        <canvas id="mainCanvas"></canvas>
+                        <!-- Canvas Masker untuk menggambar area hapus (manual/otomatis) -->
+                        <canvas id="maskCanvas"></canvas>
+                        <!-- Loading Overlay -->
+                        <div id="loadingOverlay" class="loading-overlay hidden">
+                            <div class="spinner"></div>
+                            <p id="loadingText">Sedang menganalisis pixel...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Utama -->
+    <script src="app.js"></script>
+</body>
+</html>
